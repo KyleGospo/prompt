@@ -21,10 +21,7 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later and MIT-open-group AND CC
 URL:            https://wiki.gnome.org/Apps/Terminal/VTE
 Source0:        https://gitlab.gnome.org/GNOME/vte/-/archive/%{version}/vte-%{version}.tar.gz
 
-# https://bugzilla.gnome.org/show_bug.cgi?id=711059
-# https://bugzilla.redhat.com/show_bug.cgi?id=1103380
-# https://pagure.io/fedora-workstation/issue/216
-Patch0:         vte291-cntnr-precmd-preexec-scroll.patch
+Patch0:         prompt.patch
 
 BuildRequires:  pkgconfig(fribidi) >= %{fribidi_version}
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
