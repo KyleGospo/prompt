@@ -27,7 +27,8 @@ Prompt is a terminal for GNOME with first-class support for containers.
 %autosetup -n prompt-main
 
 %build
-%meson
+%meson \
+	-Ddebug=false
 %meson_build
 
 %install
@@ -36,3 +37,12 @@ Prompt is a terminal for GNOME with first-class support for containers.
 %files
 %license COPYING
 %doc README.md
+%{_bindir}/%{name}
+%{_libexecdir}/%{name}-agent
+%{_datadir}/applications/org.gnome.Prompt.desktop
+%{_datadir}/dbus-1/services/org.gnome.Prompt.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Prompt.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Prompt*.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Prompt*.svg
+%{_datadir}/locale/*/LC_MESSAGES/%{name}.mo
+%{_datadir}/metainfo/org.gnome.Prompt.metainfo.xml
