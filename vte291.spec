@@ -12,14 +12,14 @@
 
 Name:           vte291
 Version:        0.74.2
-Release:        1%{?dist}.prompt
+Release:        2%{?dist}.prompt
 Summary:        GTK+ 3 terminal emulator library
 
 # libvte-2.91.so is generated from LGPLv2+ and MIT sources
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later and MIT-open-group AND CC-BY-4.0
 
 URL:            https://wiki.gnome.org/Apps/Terminal/VTE
-Source0:        https://gitlab.gnome.org/GNOME/vte/-/archive/%{version}/vte-%{version}.tar.gz
+Source0:        https://gitlab.gnome.org/GNOME/vte/-/archive/master/vte-master.tar.gz
 
 Patch0:         prompt.patch
 
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(icu-uc) >= %{icu_uc_version}
 BuildRequires:  pkgconfig(libpcre2-8) >= %{pcre2_version}
 BuildRequires:  pkgconfig(libsystemd) >= %{libsystemd_version}
 BuildRequires:  pkgconfig(pango) >= %{pango_version}
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
@@ -116,7 +117,7 @@ The vte-profile package contains a profile.d script for the VTE terminal
 emulator library.
 
 %prep
-%autosetup -p1 -n vte-%{version}
+%autosetup -p1 -n vte-master
 %if 0%{?flatpak}
 # Install user units where systemd macros expect them
 sed -i -e "/^vte_systemduserunitdir =/s|vte_prefix|'/usr'|" meson.build
