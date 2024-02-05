@@ -12,7 +12,7 @@
 
 Name:           vte291
 Version:        0.74.2
-Release:        2%{?dist}.prompt
+Release:        3%{?dist}.prompt
 Summary:        GTK+ 3 terminal emulator library
 
 # libvte-2.91.so is generated from LGPLv2+ and MIT sources
@@ -21,7 +21,13 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later and MIT-open-group AND CC
 URL:            https://wiki.gnome.org/Apps/Terminal/VTE
 Source0:        https://gitlab.gnome.org/GNOME/vte/-/archive/master/vte-master.tar.gz
 
-Patch0:         prompt.patch
+# https://bugzilla.gnome.org/show_bug.cgi?id=711059
+# https://bugzilla.redhat.com/show_bug.cgi?id=1103380
+# https://pagure.io/fedora-workstation/issue/216
+# Patch0:         vte291-cntnr-precmd-preexec-scroll.patch
+
+# https://gitlab.gnome.org/chergert/prompt/-/blob/main/build-aux/0001-add-notification-and-shell-precmd-preexec.patch
+Patch0:         https://gitlab.gnome.org/chergert/prompt/-/raw/main/build-aux/0001-add-notification-and-shell-precmd-preexec.patch
 
 BuildRequires:  pkgconfig(fribidi) >= %{fribidi_version}
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
@@ -177,6 +183,15 @@ sed -i -e "/^vte_systemduserunitdir =/s|vte_prefix|'/usr'|" meson.build
 %{_sysconfdir}/profile.d/vte.sh
 
 %changelog
+* Wed Jan 31 2024 Pete Walter <pwalter@fedoraproject.org> - 0.74.2-3
+- Rebuild for ICU 74
+
+* Sat Jan 27 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.74.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sat Dec 16 2023 Kalev Lember <klember@redhat.com> - 0.74.2-1
+- Update to 0.74.2
+
 * Sun Oct 22 2023 Kalev Lember <klember@redhat.com> - 0.74.1-1
 - Update to 0.74.1
 
@@ -189,7 +204,7 @@ sed -i -e "/^vte_systemduserunitdir =/s|vte_prefix|'/usr'|" meson.build
 * Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.72.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
-* Tue Jul 11 2023 František Zatloukal <fzatlouk@redhat.com> - 0.72.2-2
+* Tue Jul 11 2023 FrantiĊĦek Zatloukal <fzatlouk@redhat.com> - 0.72.2-2
 - Rebuilt for ICU 73.2
 
 * Wed Jun 07 2023 Kalev Lember <klember@redhat.com> - 0.72.2-1
