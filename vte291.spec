@@ -44,7 +44,11 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
+%if 0%{?suse_version}
+BuildRequires:  python3-gi-docgen
+%else
 BuildRequires:  gi-docgen
+%endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
 BuildRequires:  meson
