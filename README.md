@@ -1,2 +1,2 @@
-# prompt
-Spec files for Prompt on Copr
+# Ptyxis
+Spec files for Ptyxis on Copr
