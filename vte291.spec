@@ -24,10 +24,7 @@ Source0:        https://download.gnome.org/sources/vte/0.74/vte-%{version}.tar.x
 # https://bugzilla.gnome.org/show_bug.cgi?id=711059
 # https://bugzilla.redhat.com/show_bug.cgi?id=1103380
 # https://pagure.io/fedora-workstation/issue/216
-# Patch0:         vte291-cntnr-precmd-preexec-scroll.patch
-
-# https://gitlab.gnome.org/chergert/prompt/-/blob/main/build-aux/0001-add-notification-and-shell-precmd-preexec.patch
-Patch0:         https://gitlab.gnome.org/chergert/prompt/-/raw/main/build-aux/0001-add-notification-and-shell-precmd-preexec.patch
+Patch0:         vte291-cntnr-precmd-preexec-scroll.patch
 
 BuildRequires:  pkgconfig(fribidi) >= %{fribidi_version}
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
