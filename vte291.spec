@@ -12,14 +12,14 @@
 
 Name:           vte291
 Version:        0.74.2
-Release:        3%{?dist}.prompt
+Release:        4%{?dist}.prompt
 Summary:        GTK+ 3 terminal emulator library
 
 # libvte-2.91.so is generated from LGPLv2+ and MIT sources
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later and MIT-open-group AND CC-BY-4.0
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND X11 AND CC-BY-4.0
 
 URL:            https://wiki.gnome.org/Apps/Terminal/VTE
-Source0:        https://gitlab.gnome.org/GNOME/vte/-/archive/master/vte-master.tar.gz
+Source0:        https://download.gnome.org/sources/vte/0.74/vte-%{version}.tar.xz
 
 # https://bugzilla.gnome.org/show_bug.cgi?id=711059
 # https://bugzilla.redhat.com/show_bug.cgi?id=1103380
@@ -40,15 +40,10 @@ BuildRequires:  pkgconfig(icu-uc) >= %{icu_uc_version}
 BuildRequires:  pkgconfig(libpcre2-8) >= %{pcre2_version}
 BuildRequires:  pkgconfig(libsystemd) >= %{libsystemd_version}
 BuildRequires:  pkgconfig(pango) >= %{pango_version}
-BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-%if 0%{?suse_version}
-BuildRequires:  python3-gi-docgen
-%else
 BuildRequires:  gi-docgen
-%endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
 BuildRequires:  meson
@@ -90,7 +85,7 @@ Summary:        Development files for GTK+ 3 %{name}
 
 # vte-2.91 is generated from GPLv3+ sources, while the public headers are
 # LGPLv3+
-License:        GPLv3+ and LGPLv3+
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 
 Requires:       %{name}%{?_isa} = %{version}-%{release}
 
@@ -103,7 +98,7 @@ Summary:        Development files for GTK 4 %{name}
 
 # vte-2.91 is generated from GPLv3+ sources, while the public headers are
 # LGPLv3+
-License:        GPLv3+ and LGPLv3+
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 
 Requires:       %{name}-gtk4%{?_isa} = %{version}-%{release}
 Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
@@ -118,7 +113,7 @@ developing GTK 4 applications that use %{name}.
 # of the multilib packages (i686 + x86_64) as the replacement.
 %package -n     vte-profile
 Summary:        Profile script for VTE terminal emulator library
-License:        GPLv3+
+License:        GPL-3.0-or-later
 # vte.sh was previously part of the vte3 package
 Conflicts:      vte3 < 0.36.1-3
 
@@ -127,7 +122,7 @@ The vte-profile package contains a profile.d script for the VTE terminal
 emulator library.
 
 %prep
-%autosetup -p1 -n vte-master
+%autosetup -p1 -n vte-%{version}
 %if 0%{?flatpak}
 # Install user units where systemd macros expect them
 sed -i -e "/^vte_systemduserunitdir =/s|vte_prefix|'/usr'|" meson.build
@@ -187,6 +182,9 @@ sed -i -e "/^vte_systemduserunitdir =/s|vte_prefix|'/usr'|" meson.build
 %{_sysconfdir}/profile.d/vte.sh
 
 %changelog
+* Mon Feb 12 2024 Tomas Popela <tpopela@redhat.com> - 0.74.2-4
+- Build for the SPDX license format change
+
 * Wed Jan 31 2024 Pete Walter <pwalter@fedoraproject.org> - 0.74.2-3
 - Rebuild for ICU 74
 
@@ -208,7 +206,7 @@ sed -i -e "/^vte_systemduserunitdir =/s|vte_prefix|'/usr'|" meson.build
 * Sat Jul 22 2023 Fedora Release Engineering <releng@fedoraproject.org> - 0.72.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
 
-* Tue Jul 11 2023 FrantiĊĦek Zatloukal <fzatlouk@redhat.com> - 0.72.2-2
+* Tue Jul 11 2023 František Zatloukal <fzatlouk@redhat.com> - 0.72.2-2
 - Rebuilt for ICU 73.2
 
 * Wed Jun 07 2023 Kalev Lember <klember@redhat.com> - 0.72.2-1
