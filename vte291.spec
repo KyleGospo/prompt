@@ -26,6 +26,8 @@ Source0:        https://download.gnome.org/sources/vte/0.74/vte-%{version}.tar.x
 # https://pagure.io/fedora-workstation/issue/216
 Patch0:         vte291-cntnr-precmd-preexec-scroll.patch
 
+Patch1:         vte291-ptyxis.patch
+
 BuildRequires:  pkgconfig(fribidi) >= %{fribidi_version}
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
