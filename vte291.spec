@@ -11,7 +11,7 @@
 %global pcre2_version 10.21
 
 Name:           vte291
-Version:        0.74.2
+Version:        0.76.0
 Release:        4%{?dist}.prompt
 Summary:        GTK+ 3 terminal emulator library
 
@@ -19,14 +19,7 @@ Summary:        GTK+ 3 terminal emulator library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND X11 AND CC-BY-4.0
 
 URL:            https://wiki.gnome.org/Apps/Terminal/VTE
-Source0:        https://download.gnome.org/sources/vte/0.74/vte-%{version}.tar.xz
-
-# https://bugzilla.gnome.org/show_bug.cgi?id=711059
-# https://bugzilla.redhat.com/show_bug.cgi?id=1103380
-# https://pagure.io/fedora-workstation/issue/216
-Patch0:         vte291-cntnr-precmd-preexec-scroll.patch
-
-Patch1:         vte291-ptyxis.patch
+Source0:        https://download.gnome.org/sources/vte/0.76/vte-%{version}.tar.xz
 
 BuildRequires:  pkgconfig(fribidi) >= %{fribidi_version}
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
@@ -40,6 +33,7 @@ BuildRequires:  pkgconfig(libpcre2-8) >= %{pcre2_version}
 BuildRequires:  pkgconfig(libsystemd) >= %{libsystemd_version}
 BuildRequires:  pkgconfig(pango) >= %{pango_version}
 BuildRequires:  pkgconfig(zlib)
+Buildrequires:  pkgconfig(liblz4)
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  gi-docgen
