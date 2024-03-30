@@ -21,6 +21,9 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT AND X11 AND CC-BY
 URL:            https://wiki.gnome.org/Apps/Terminal/VTE
 Source0:        https://download.gnome.org/sources/vte/0.76/vte-%{version}.tar.xz
 
+# https://gitlab.gnome.org/chergert/ptyxis/-/blob/main/build-aux/0001-add-notification-and-shell-precmd-preexec.patch?ref_type=heads
+Patch0:         0001-add-notification-and-shell-precmd-preexec.patch
+
 BuildRequires:  pkgconfig(fribidi) >= %{fribidi_version}
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
